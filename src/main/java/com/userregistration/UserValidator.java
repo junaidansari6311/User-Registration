@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
         private static final String MOBILE_NO_PATTERN="[0-9]{1,3}[ ][1-9]{1}[0-9]{9}$";
         private static final String PASSWORD_RULE1_PATTERN="^[A-Za-z]{8,}$";
         private static final String PASSWORD_WITH_ONE_UPPERCASE="^(?=.*[A-Z])[A-Za-z]{8,}$";
+        private static final String PASSWORD_WITH_ONE_NUMERIC_VALUE="^(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9]{8,}$";
         public static boolean validateName(String name) {
             if (name.matches(NAME_PATTERN)) {
                 return true;
@@ -44,5 +45,11 @@ import java.util.regex.Pattern;
             System.out.println("WELCOME TO USER REGISTRATION");
         }
 
+        public static boolean validatePasswordAtleastOneNumericValue(String passwordWithOneNumericValue) {
+            if (passwordWithOneNumericValue.matches(PASSWORD_WITH_ONE_NUMERIC_VALUE)){
+                return true;
+            }
+            return false;
+        }
     }
 

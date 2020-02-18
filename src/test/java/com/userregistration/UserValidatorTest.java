@@ -124,7 +124,7 @@ public class UserValidatorTest {
         boolean result = UserValidator.validatePasswordMinimum8Characters("junaid");
         Assert.assertFalse(result);
     }
-    //Test Cases for password for atleast one upper case
+    //Test Cases for password that contains atleast one upper case
 
     @Test
     public void givenPasswordWithAtleastOneUpperCase_WhenProper_ShouldReturnTrue() {
@@ -147,6 +147,33 @@ public class UserValidatorTest {
     @Test
     public void givenPasswordWithAtleastOneUpperCase_WhenAllLowerCase_ShouldReturnFalse() {
         boolean result = UserValidator.validatePasswordAtleastOneUpperCase("junaidansari");
+        Assert.assertFalse(result);
+    }
+
+    //Test Cases for password that contains atleast one numeric value
+
+
+    @Test
+    public void givenPasswordWithAtleastOneNumericValue_WhenProper_ShouldReturnTrue() {
+        boolean result = UserValidator.validatePasswordAtleastOneNumericValue("Junaid123");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPasswordWithAtleastOneNumericValue_WhenSpecialCharacterPresent_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordAtleastOneNumericValue("Junaid@123");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPasswordWithAtleastOneNumericValue_WhenNoNumericValuePresent_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordAtleastOneNumericValue("JunaidAns");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPasswordWithAtleastOneNumericValue_WhenAllLowerCase_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordAtleastOneNumericValue("junaid12");
         Assert.assertFalse(result);
     }
 }
