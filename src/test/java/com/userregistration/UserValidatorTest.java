@@ -108,8 +108,20 @@ public class UserValidatorTest {
     }
 
     @Test
-    public void givenMobileNumber_WhenFormatImproper_SHouldReturnFalse() {
+    public void givenMobileNumber_WhenFormatImproper_ShouldReturnFalse() {
         boolean result = UserValidator.validateMobileNumber("917666544990");
+        Assert.assertFalse(result);
+    }
+    //Test Cases for password for minimum 8 characters
+    @Test
+    public void givenPasswordForRule1_WhenProper_ShouldReturnTrue() {
+        boolean result = UserValidator.validatePasswordMinimum8Characters("junaidansari");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPasswordForRule1_WhenImproper_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordMinimum8Characters("junaid");
         Assert.assertFalse(result);
     }
 }
