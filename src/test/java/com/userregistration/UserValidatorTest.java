@@ -176,4 +176,29 @@ public class UserValidatorTest {
         boolean result = UserValidator.validatePasswordAtleastOneNumericValue("junaid12");
         Assert.assertFalse(result);
     }
+    //Test Cases for password that contains exactly one special character
+
+    @Test
+    public void givenPasswordWithAtleastOneSpecialCharacter_WhenProper_ShouldReturnTrue() {
+        boolean result = UserValidator.validatePasswordAtleastOneSpecialCharacter("Junaid@123");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPasswordWithAtleastOneSpecialCharacter_WhenSpecialCharacterNotPresent_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordAtleastOneSpecialCharacter("Junaid123");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPasswordWithAtleastOneSpecialCharacter_WhenAllLowerCase_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordAtleastOneSpecialCharacter("junaid@123");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPasswordWithAtleastOneSpecialCharacter_WhenNoNumericValuePresent_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordAtleastOneSpecialCharacter("Junaid@ansari");
+        Assert.assertFalse(result);
+    }
 }
