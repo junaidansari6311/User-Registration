@@ -33,7 +33,7 @@ public class UserValidatorTest {
         boolean result = UserValidator.validateName("1234");
         Assert.assertFalse(result);
     }
-// Test Cases for Last Name
+    // Test Cases for Last Name
     @Test
     public void givenLastName_WhenProper_ShouldReturnTrue() {
         boolean result = UserValidator.validateName("Ansari");
@@ -63,5 +63,16 @@ public class UserValidatorTest {
         boolean result = UserValidator.validateName("1234");
         Assert.assertFalse(result);
     }
+    //Test Cases for email address
+    @Test
+    public void givenEmailAddress_WhenProper_ShouldReturnTrue() {
+        boolean result = UserValidator.validateEmailAddress("abc.xyz@bridgeLabz.co.in");
+        Assert.assertTrue(result);
+    }
 
+    @Test
+    public void givenEmailAddress_WhenImproper_ShouldReturnFalse() {
+        boolean result = UserValidator.validateEmailAddress("abc.@gmail.com");
+        Assert.assertFalse(result);
+    }
 }
