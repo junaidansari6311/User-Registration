@@ -124,4 +124,29 @@ public class UserValidatorTest {
         boolean result = UserValidator.validatePasswordMinimum8Characters("junaid");
         Assert.assertFalse(result);
     }
+    //Test Cases for password for atleast one upper case
+
+    @Test
+    public void givenPasswordWithAtleastOneUpperCase_WhenProper_ShouldReturnTrue() {
+        boolean result = UserValidator.validatePasswordAtleastOneUpperCase("Junaidansari");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPasswordWithAtleastOneUpperCase_WhenSpecialCharactersPresent_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordAtleastOneUpperCase("junaid@as");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPasswordWithAtleastOneUpperCase_WhenNumbersPresent_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordAtleastOneUpperCase("Junaid123");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPasswordWithAtleastOneUpperCase_WhenAllLowerCase_ShouldReturnFalse() {
+        boolean result = UserValidator.validatePasswordAtleastOneUpperCase("junaidansari");
+        Assert.assertFalse(result);
+    }
 }
